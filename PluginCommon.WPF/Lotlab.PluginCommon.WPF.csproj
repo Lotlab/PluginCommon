@@ -1,11 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PluginCommon\PluginCommon.csproj" />
+    <ProjectReference Include="..\PluginCommon\Lotlab.PluginCommon.csproj" />
   </ItemGroup>
 
   <ItemGroup>

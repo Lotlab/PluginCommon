@@ -9,12 +9,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PluginCommon\PluginCommon.csproj" />
+    <ProjectReference Include="..\PluginCommon\Lotlab.PluginCommon.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="OverlayPlugin.Common">
-      <HintPath>..\..\..\..\SDK\ACT\OverlayPluginCN\libs\OverlayPlugin.Common.dll</HintPath>
+      <HintPath>..\..\..\..\..\SDK\ACT\OverlayPluginCN\libs\OverlayPlugin.Common.dll</HintPath>
+      <CopyLocal>True</CopyLocal>
     </Reference>
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>

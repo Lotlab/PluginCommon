@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PluginCommon", "PluginCommon\PluginCommon.csproj", "{E02BCCAC-A5E7-48F7-A653-FC976BD2F9B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lotlab.PluginCommon", "PluginCommon\Lotlab.PluginCommon.csproj", "{E02BCCAC-A5E7-48F7-A653-FC976BD2F9B7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PluginCommon.WPF", "PluginCommon.WPF\PluginCommon.WPF.csproj", "{601FB729-7D4E-4CA7-A791-B37B8C3C7580}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lotlab.PluginCommon.WPF", "PluginCommon.WPF\Lotlab.PluginCommon.WPF.csproj", "{601FB729-7D4E-4CA7-A791-B37B8C3C7580}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PluginCommon.Tests", "PluginCommon.Tests\PluginCommon.Tests.csproj", "{4F749577-96AA-49BD-AD1D-0C3FD7CA2A26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lotlab.PluginCommon.Tests", "PluginCommon.Tests\Lotlab.PluginCommon.Tests.csproj", "{4F749577-96AA-49BD-AD1D-0C3FD7CA2A26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginCommon.FFXIV", "PluginCommon.FFXIV\PluginCommon.FFXIV.csproj", "{401EABEA-3D71-43EC-B77F-41AF1BB1BDBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lotlab.PluginCommon.FFXIV", "PluginCommon.FFXIV\Lotlab.PluginCommon.FFXIV.csproj", "{401EABEA-3D71-43EC-B77F-41AF1BB1BDBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginCommon.Overlay", "PluginCommon.Overlay\PluginCommon.Overlay.csproj", "{FE362E0D-195B-4D8E-8FF3-CC04A947B8A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lotlab.PluginCommon.Overlay", "PluginCommon.Overlay\Lotlab.PluginCommon.Overlay.csproj", "{FE362E0D-195B-4D8E-8FF3-CC04A947B8A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

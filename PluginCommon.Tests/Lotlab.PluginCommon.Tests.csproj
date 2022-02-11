@@ -15,7 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PluginCommon\PluginCommon.csproj" />
+    <ProjectReference Include="..\PluginCommon.FFXIV\Lotlab.PluginCommon.FFXIV.csproj" />
+    <ProjectReference Include="..\PluginCommon\Lotlab.PluginCommon.csproj" />
   </ItemGroup>
 
 </Project>
