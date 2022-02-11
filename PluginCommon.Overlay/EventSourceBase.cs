@@ -17,7 +17,6 @@ namespace Lotlab.PluginCommon.Overlay
         public string Name { get; protected set; }
         protected TinyIoCContainer container;
         private EventDispatcherProxy dispatcher;
-        private bool updateRunning = false;
 
         protected ILogger logger;
         protected Dictionary<string, JObject> eventCache = new Dictionary<string, JObject>();
