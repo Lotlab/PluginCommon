@@ -153,7 +153,7 @@ namespace Lotlab.PluginCommon.FFXIV.Parser
                 return obj;
             }
 
-            throw new Exception($"Constructor of {type.Item1} is not found.");
+            throw new ConstructorNotFoundException($"Constructor of {type.Item1} is not found.");
         }
 
         /// <summary>
@@ -223,5 +223,17 @@ namespace Lotlab.PluginCommon.FFXIV.Parser
             }
             return stuff;
         }
+    }
+
+
+    [Serializable]
+    public class ConstructorNotFoundException : Exception
+    {
+        public ConstructorNotFoundException() { }
+        public ConstructorNotFoundException(string message) : base(message) { }
+        public ConstructorNotFoundException(string message, Exception inner) : base(message, inner) { }
+        protected ConstructorNotFoundException(
+          System.Runtime.Serialization.SerializationInfo info,
+          System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
     }
 }

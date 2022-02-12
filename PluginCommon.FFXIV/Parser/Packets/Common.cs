@@ -33,10 +33,10 @@ namespace Lotlab.PluginCommon.FFXIV.Parser.Packets
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct LandIdent
     {
-        public int16_t landId; //00
-        public int16_t wardNum; //02
-        public int16_t territoryTypeId; //04
-        public int16_t worldId; //06
+        public uint16_t landId; //00
+        public uint16_t wardNum; //02
+        public uint16_t territoryTypeId; //04
+        public uint16_t worldId; //06
 
         public override string ToString()
         {
