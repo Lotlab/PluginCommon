@@ -119,12 +119,12 @@ namespace Lotlab.PluginCommon.FFXIV.Parser.Packets
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public struct HouseInfoEntry
         {
-            uint32_t housePrice;
-            uint8_t infoFlags;
+            public uint32_t housePrice;
+            public uint8_t infoFlags;
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            uint8_t[] houseAppeal;
+            public uint8_t[] houseAppeal;
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 32)]
-            byte[] estateOwnerName;
+            public byte[] estateOwnerName;
         }
 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 60)]

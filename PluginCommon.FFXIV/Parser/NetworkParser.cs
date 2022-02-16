@@ -59,6 +59,16 @@ namespace Lotlab.PluginCommon.FFXIV.Parser
         /// <summary>
         /// Set opcode for packet
         /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="opcode"></param>
+        public void SetOpcode<T>(UInt16 opcode) where T: IPCPacketBase
+        {
+            SetOpcode(typeof(T).Name, opcode);
+        }
+
+        /// <summary>
+        /// Set opcode for packet
+        /// </summary>
         /// <param name="typeName"></param>
         /// <param name="opcode"></param>
         public void SetOpcode(string typeName, UInt16 opcode)
