@@ -17,6 +17,15 @@ namespace Lotlab.PluginCommon.FFXIV.Parser.Packets
         }
     }
 
+    public class UpdateInventorySlot : IPCPacketBase<FFXIVIpcItemInfo>
+    {
+        public override string ToString()
+        {
+            return $"UpdateInventorySlot. ID: {Value.catalogId}, Slot: ({Value.containerSequence}, {Value.containerId}, {Value.slot}), Quantity: {Value.quantity}";
+        }
+    }
+
+
     public class ObjectSpawn : IPCPacketBase<FFXIVIpcObjectSpawn> 
     {
         /// <summary>
