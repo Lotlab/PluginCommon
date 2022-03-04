@@ -108,17 +108,24 @@ namespace Lotlab.PluginCommon.FFXIV.Parser
                     continue;
 
                 // lookup all types
-                var types = assembly.GetTypes();
-                foreach (var item in types)
+                try
                 {
-                    if (!item.IsAbstract && item.IsAssignableToGenericType(baseType))
+                    var types = assembly.GetTypes();
+                    foreach (var item in types)
                     {
-                        var args = item.GetGenericBaseTypeOf(baseType).GetGenericArguments();
-                        if (args.Length != 1)
-                            continue;
+                        if (!item.IsAbstract && item.IsAssignableToGenericType(baseType))
+                        {
+                            var args = item.GetGenericBaseTypeOf(baseType).GetGenericArguments();
+                            if (args.Length != 1)
+                                continue;
 
-                        AddType(item, args[0]);
+                            AddType(item, args[0]);
+                        }
                     }
+                }
+                catch
+                {
+
                 }
             }
         }
