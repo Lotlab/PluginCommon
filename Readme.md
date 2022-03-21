@@ -1,6 +1,6 @@
-# ACT Plugin Commmon Libaray
+# ACT Plugin Commmon Library
 
-A libaray for writing Advanced Combat Tracker plugin.
+A library for writing Advanced Combat Tracker plugin.
 
 This library now contains:
 
@@ -15,6 +15,8 @@ This library now contains:
   - NetworkParser: An IPC parser for FFXIV network packet.
 - PluginCommon.Overlay
   - EventSourceBase: A wrapper class for OverlayPlugin.EventSourceBase
+
+We recommand you use ilmerge to pack this assembly into your project.
 
 # ACT 插件开发公共库
 
