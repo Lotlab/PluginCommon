@@ -181,39 +181,44 @@ namespace Lotlab.PluginCommon.Updater
 
     public class UpdateGenerater
     {
-        public UpdateGenerater() { }
+        string SrcDir { get; }
+        string DstDir { get; }
 
-        public void Generate(string path, string version, string changelogs)
+        public UpdateGenerater(string src, string dst) 
         {
-            const string outDirName = "_update";
-            var outDir = Path.Combine(path, outDirName);
+            SrcDir = src;
+            DstDir = dst;
+        }
 
-            if (!Directory.Exists(outDir))
-                Directory.CreateDirectory(outDir);
+        public void Generate(string version, string changelogs)
+        {
+            // Prepare dir
+            if (!Directory.Exists(DstDir))
+                Directory.CreateDirectory(DstDir);
 
-            var packDir = Path.Combine(outDir, version);
+            var packDir = Path.Combine(DstDir, version);
             if (!Directory.Exists(packDir))
                 Directory.CreateDirectory(packDir);
 
-            long ts = DateTimeOffset.Now.ToUnixTimeSeconds();
+            long timestamp = DateTimeOffset.Now.ToUnixTimeSeconds();
             var versionFileName = version + ".json";
 
-            VersionInfo versionInfo = new VersionInfo(ts, version, versionFileName, changelogs);
+            VersionInfo versionInfo = new VersionInfo(timestamp, version, versionFileName, changelogs);
             List<FileInfo> fileList = new List<FileInfo>();
 
-            var files = Directory.EnumerateFiles(path, "*", SearchOption.AllDirectories)
-                    .Select(p => p.Replace(path, ""));
+            var files = Directory.EnumerateFiles(SrcDir, "*", SearchOption.AllDirectories)
+                    .Select(p => p.Replace(SrcDir, ""));
 
             foreach (var item in files)
             {
-                if (item.StartsWith(outDirName)) continue;
-
-                var filePath = Path.Combine(path, item);
+                var filePath = Path.Combine(SrcDir, item);
                 var fileName = item.Replace("\\", "/");
 
+                // Calculate hash
                 var hash = Updater.ComputeHash(filePath);
                 fileList.Add(new FileInfo(fileName, version + "/" + fileName, hash));
 
+                // Copy file
                 var dstPath = Path.Combine(packDir, fileName);
 
                 if (!Directory.Exists(Path.GetDirectoryName(dstPath)))
@@ -222,8 +227,8 @@ namespace Lotlab.PluginCommon.Updater
                 File.Copy(filePath, dstPath, true);
             }
 
-            File.WriteAllText(Path.Combine(outDir, "update.json"), JsonConvert.SerializeObject(versionInfo));
-            File.WriteAllText(Path.Combine(outDir, versionFileName), JsonConvert.SerializeObject(fileList));
+            File.WriteAllText(Path.Combine(DstDir, "update.json"), JsonConvert.SerializeObject(versionInfo));
+            File.WriteAllText(Path.Combine(DstDir, versionFileName), JsonConvert.SerializeObject(fileList));
         }
     }
 }
