@@ -155,22 +155,35 @@ namespace Lotlab.PluginCommon.FFXIV.Parser
 
             // Convert data
             var type = TypeDict[packetName];
-            var data = ByteArrayToStructure(type.Item2, array);
+            return ParsePacketAs(type.Item1, type.Item2, array);
+        }
+
+        /// <summary>
+        /// Parse network packet as IPC packet
+        /// </summary>
+        /// <param name="ipcType">type of IPCPacketBase</param>
+        /// <param name="valueType">type of inner value</param>
+        /// <param name="array"></param>
+        /// <returns></returns>
+        /// <exception cref="ConstructorNotFoundException"></exception>
+        public IPCPacketBase ParsePacketAs(Type ipcType, Type valueType, byte[] array)
+        {
+            var data = ByteArrayToStructure(valueType, array);
 
             // Construct target object
-            var constr = type.Item1.GetConstructor(new Type[1] { type.Item2 });
+            var constr = ipcType.GetConstructor(new Type[1] { valueType });
             if (constr != null)
                 return constr.Invoke(new object[] { data }) as IPCPacketBase;
 
-            constr = type.Item1.GetConstructor(new Type[0]);
+            constr = ipcType.GetConstructor(new Type[0]);
             if (constr != null)
             {
                 var obj = constr.Invoke(null) as IPCPacketBase;
-                type.Item1.GetProperty("Value").SetValue(obj, data);
+                ipcType.GetProperty("Value").SetValue(obj, data);
                 return obj;
             }
 
-            throw new ConstructorNotFoundException($"Constructor of {type.Item1} is not found.");
+            throw new ConstructorNotFoundException($"Constructor of {ipcType} is not found.");
         }
 
         /// <summary>
@@ -226,7 +239,7 @@ namespace Lotlab.PluginCommon.FFXIV.Parser
         /// <param name="bytes"></param>
         /// <see cref="https://stackoverflow.com/a/2887"/>
         /// <returns></returns>
-        object ByteArrayToStructure(Type t, byte[] bytes)
+        public object ByteArrayToStructure(Type t, byte[] bytes)
         {
             object stuff;
             GCHandle handle = GCHandle.Alloc(bytes, GCHandleType.Pinned);
