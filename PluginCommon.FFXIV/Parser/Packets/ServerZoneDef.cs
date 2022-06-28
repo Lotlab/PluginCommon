@@ -129,5 +129,10 @@ namespace Lotlab.PluginCommon.FFXIV.Parser.Packets
 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 60)]
         public HouseInfoEntry[] houseInfoEntry;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
+        public uint8_t[] purchaseType;
+
+        public uint32_t padding;
     };
 }
