@@ -61,7 +61,7 @@ namespace Lotlab.PluginCommon
                     }
                     catch (Exception e)
                     {
-                        LogError("日志文件备份出错：" + e.Message);
+                        LogError("日志文件备份出错", e);
                     }
 
                     logFile = File.Open(file, FileMode.Create, FileAccess.Write, FileShare.ReadWrite);
@@ -70,7 +70,7 @@ namespace Lotlab.PluginCommon
             }
             catch (Exception e)
             {
-                LogError("日志文件打开出错，将无法写日志文件：" + e.Message);
+                LogError("日志文件打开出错，将无法写日志文件", e);
             }
 
         }
@@ -97,11 +97,20 @@ namespace Lotlab.PluginCommon
         /// <param name="content"></param>
         public void Log(LogLevel level, string content)
         {
+            var item = new LogItem(level, content);
+            Log(item);
+        }
+
+        /// <summary>
+        /// Log
+        /// </summary>
+        /// <param name="item"></param>
+        public void Log(LogItem item)
+        {
             lock (logLock)
             {
-                var item = new LogItem(level, content);
                 logs.Add(item);
-                if (level >= filterLevel)
+                if (item.Level >= filterLevel)
                 {
                     if (ObserveLogs.Count > maxObserveLog)
                         ObserveLogs.RemoveAt(0);
@@ -149,31 +158,30 @@ namespace Lotlab.PluginCommon
             }
         }
 
-        public void LogTrace(string content)
+        public void LogTrace(string content, Exception e = null)
         {
-            Log(LogLevel.TRACE, content);
+            Log(new LogItem(LogLevel.TRACE, content, e));
         }
-        public void LogDebug(string content)
+        public void LogDebug(string content, Exception e = null)
         {
-            Log(LogLevel.DEBUG, content);
+            Log(new LogItem(LogLevel.DEBUG, content, e));
         }
-        public void LogInfo(string content)
+        public void LogInfo(string content, Exception e = null)
         {
-            Log(LogLevel.INFO, content);
+            Log(new LogItem(LogLevel.INFO, content, e));
         }
-        public void LogWarning(string content)
+        public void LogWarning(string content, Exception e = null)
         {
-            Log(LogLevel.WARNING, content);
+            Log(new LogItem(LogLevel.WARNING, content, e));
         }
-        public void LogError(string content)
+        public void LogError(string content, Exception e = null)
         {
-            Log(LogLevel.ERROR, content);
+            Log(new LogItem(LogLevel.ERROR, content, e));
         }
         public void LogError(Exception e)
         {
-            LogError(e.ToString());
+            Log(new LogItem(LogLevel.ERROR, e.Message, e));
         }
-
     }
 
     public class LogItem
@@ -183,12 +191,15 @@ namespace Lotlab.PluginCommon
         public LogLevel Level { get; }
 
         public string Content { get; }
+        
+        public Exception Exception { get; }
 
-        public LogItem(LogLevel level, string content)
+        public LogItem(LogLevel level, string content, Exception e = null)
         {
             Level = level;
             Content = content;
             Time = DateTime.Now;
+            Exception = e;
         }
 
         public override string ToString()
@@ -199,6 +210,28 @@ namespace Lotlab.PluginCommon
             sb.Append(Level.ToString());
             sb.Append("] ");
             sb.Append(Content);
+            if (Exception != null)
+            {
+                sb.Append(" ");
+                sb.Append(Exception);
+            }
+            return sb.ToString();
+        }
+
+        public string ToShortString()
+        {
+            var sb = new StringBuilder();
+            sb.Append("[");
+            sb.Append(Time.ToLongTimeString());
+            sb.Append("] [");
+            sb.Append(Level.ToString());
+            sb.Append("] ");
+            sb.Append(Content);
+            if (Exception != null)
+            {
+                sb.Append(" ");
+                sb.Append(Exception.Message);
+            }
             return sb.ToString();
         }
     }
