@@ -194,6 +194,15 @@ namespace Lotlab.PluginCommon
         
         public Exception Exception { get; }
 
+        public string FullContent
+        {
+            get
+            {
+                if (Exception != null) return Content + " " + Exception.Message;
+                return Content;
+            }
+        }
+
         public LogItem(LogLevel level, string content, Exception e = null)
         {
             Level = level;
