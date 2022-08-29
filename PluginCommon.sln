@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lotlab.PluginCommon.Overlay
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lotlab.PluginCommon.Updater", "PluginCommon.Updater\Lotlab.PluginCommon.Updater.csproj", "{2EA34400-93B3-4E9A-8B89-0F803D734BCA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lotlab.PluginCommon.Packer", "PluginCommon.Packer\Lotlab.PluginCommon.Packer.csproj", "{99768928-35EC-4121-89E1-700DF4C29BEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{2EA34400-93B3-4E9A-8B89-0F803D734BCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2EA34400-93B3-4E9A-8B89-0F803D734BCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2EA34400-93B3-4E9A-8B89-0F803D734BCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99768928-35EC-4121-89E1-700DF4C29BEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99768928-35EC-4121-89E1-700DF4C29BEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99768928-35EC-4121-89E1-700DF4C29BEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99768928-35EC-4121-89E1-700DF4C29BEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
