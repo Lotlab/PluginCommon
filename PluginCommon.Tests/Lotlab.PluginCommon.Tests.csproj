@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
-
+    <Platforms>AnyCPU;x64</Platforms>
     <IsPackable>false</IsPackable>
 	<IsTestProject>true</IsTestProject>
   </PropertyGroup>
