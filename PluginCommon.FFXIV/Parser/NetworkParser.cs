@@ -88,6 +88,14 @@ namespace Lotlab.PluginCommon.FFXIV.Parser
             }
         }
 
+        /// <summary>
+        /// Clear opcode
+        /// </summary>
+        public void ClearOpcodes()
+        {
+            OpcodeDict.Clear();
+        }
+
         void AddType(Type t1, Type t2)
         {
             TypeDict[t1.Name] = new Tuple<Type, Type>(t1, t2);
