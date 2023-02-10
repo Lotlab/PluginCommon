@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using System.Reflection;
 
 namespace Lotlab.PluginCommon
 {
@@ -126,18 +127,18 @@ namespace Lotlab.PluginCommon
         /// </summary>
         /// <param name="name">property name</param>
         /// <returns></returns>
-        protected object PropertyGet([CallerMemberName] string name = "")
+        protected object PropertyGet([CallerMemberName] string name = "", BindingFlags flags = BindingFlags.Instance | BindingFlags.Public)
         {
-            return ObjType.GetProperty(name).GetValue(Instance);
+            return ObjType.GetProperty(name, flags).GetValue(Instance);
         }
         /// <summary>
         /// Set property value
         /// </summary>
         /// <param name="val">value</param>
         /// <param name="name">property name</param>
-        protected void PropertySet(object val, [CallerMemberName] string name = "")
+        protected void PropertySet(object val, [CallerMemberName] string name = "", BindingFlags flags = BindingFlags.Instance | BindingFlags.Public)
         {
-            ObjType.GetProperty(name).SetValue(Instance, val);
+            ObjType.GetProperty(name, flags).SetValue(Instance, val);
         }
         /// <summary>
         /// Add event handler
@@ -176,18 +177,18 @@ namespace Lotlab.PluginCommon
         /// </summary>
         /// <param name="val"></param>
         /// <param name="name">field name</param>
-        protected void FieldSet(object val, [CallerMemberName] string name = "")
+        protected void FieldSet(object val, [CallerMemberName] string name = "", BindingFlags flags = BindingFlags.Instance | BindingFlags.Public)
         {
-            ObjType.GetField(name).SetValue(Instance, val);
+            ObjType.GetField(name, flags).SetValue(Instance, val);
         }
         /// <summary>
         /// Get field value
         /// </summary>
         /// <param name="name">field name</param>
         /// <returns></returns>
-        protected object FieldGet([CallerMemberName] string name = "")
+        protected object FieldGet([CallerMemberName] string name = "", BindingFlags flags = BindingFlags.Instance | BindingFlags.Public)
         {
-            return ObjType.GetField(name).GetValue(Instance);
+            return ObjType.GetField(name, flags).GetValue(Instance);
         }
 
         /// <summary>
