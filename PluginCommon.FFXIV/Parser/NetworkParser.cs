@@ -148,7 +148,7 @@ namespace Lotlab.PluginCommon.FFXIV.Parser
         {
             // Parse segment
             var SegHeader = ByteArrayToStructure<SegmentHeader>(array);
-            if (SegHeader.type != SegmentType.IPC) return null;
+            if (SegHeader.type != SegmentType.IPC && SegHeader.type != 0x00) return null; // temporary fix for machina
 
             // Parse IPC
             var IPCHeader = ByteArrayToStructure<IPCHeader>(array);
@@ -203,7 +203,7 @@ namespace Lotlab.PluginCommon.FFXIV.Parser
         {
             // Parse segment
             var SegHeader = ByteArrayToStructure<SegmentHeader>(array);
-            if (SegHeader.type != SegmentType.IPC) return null;
+            if (SegHeader.type != SegmentType.IPC && SegHeader.type != 0x00) return null; // temporary fix for machina
 
             // Parse IPC
             var IPCHeader = ByteArrayToStructure<IPCHeader>(array);
