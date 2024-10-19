@@ -75,10 +75,10 @@ namespace Lotlab.PluginCommon.FFXIV.Parser.Packets
         public int16_t unknown24b;
         public uint16_t flag;
         public int16_t unknown28c;
-        public uint32_t housingLink;
-        public FFXIVARR_POSITION3 position;
         public int16_t unknown3C;
         public int16_t unknown3E;
+        public uint32_t housingLink;
+        public FFXIVARR_POSITION3 position;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
