@@ -18,7 +18,7 @@ namespace Lotlab.PluginCommon.Overlay
 
         public void RegisterHandler(string name, Func<JObject, JToken> handler)
         {
-            CallMethod(name, handler);
+            CallMethod<string, Func<JObject, JToken>>(name, handler);
         }
 
         public void RegisterEventTypes(List<string> names)
