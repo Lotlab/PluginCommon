@@ -44,9 +44,9 @@ namespace Lotlab.PluginCommon.FFXIV.Parser
 
         public UInt16 reserved;
         public UInt16 type;
+        UInt32 padding1;
         public UInt16 padding;
         public UInt16 serverId;
         public UInt32 timestamp;
-        UInt32 padding1;
     }
 }
