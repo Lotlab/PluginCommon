@@ -28,12 +28,12 @@ namespace Lotlab.PluginCommon.Overlay
 
         public void RegisterEventType(string name)
         {
-            CallMethod(name);
+            CallMethod<string>(name);
         }
 
         public void RegisterEventType(string name, Func<JObject> initCallback)
         {
-            CallMethod(name, initCallback);
+            CallMethod<string, Func<JObject>>(name, initCallback);
         }
 
         // Can be used to check that an event will be delivered before building
