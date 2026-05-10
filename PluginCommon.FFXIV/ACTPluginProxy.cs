@@ -26,6 +26,8 @@
         /// <returns></returns>
         public static bool IsFFXIVPlugin(object instance)
         {
+            if (instance == null)
+                return false;
             return instance.GetType().FullName == "FFXIV_ACT_Plugin.FFXIV_ACT_Plugin";
         }
     }
